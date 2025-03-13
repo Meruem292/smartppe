@@ -4,10 +4,10 @@ $getHostByID = getHostByID($_SESSION['host_id']);
 ?>
 
 <input type="hidden" name="host_id" value="<?php echo $_SESSION['host_id']; ?>">
-<input type="hidden" name="old_startbreak" value="<?php echo $_SESSION['start_break']; ?>">
-<input type="hidden" name="old_endbreak" value="<?php echo $_SESSION['end_break']; ?>">
-<input type="hidden" name="old_smsinterval" value="<?php echo $_SESSION['sms_interval']; ?>">
-<input type="hidden" name="old_geofencingrange" value="<?php echo $_SESSION['geofencing_range']; ?>">
+<input type="hidden" name="old_startbreak" value="<?php echo $getHostByID['start_break']; ?>">
+<input type="hidden" name="old_endbreak" value="<?php echo $getHostByID['end_break']; ?>">
+<input type="hidden" name="old_smsinterval" value="<?php echo $getHostByID['sms_interval']; ?>">
+<input type="hidden" name="old_geofencingrange" value="<?php echo $getHostByID['geofencing_range']; ?>">
 
 <div class="modal fade" id="updateConfigModal" tabindex="-1" aria-labelledby="updateConfigModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -39,8 +39,10 @@ $getHostByID = getHostByID($_SESSION['host_id']);
     </div>
 </div>
 <script>
-    $("#start_break").val($);
-    $("#end_break").val("05:00 PM");
-    $("#sms_interval").val("10");
-    $("#geofencing_range").val("50");
+    $("document").ready(function() {
+        $("#start_break").val("<?php echo $getHostByID['start_break']; ?>");
+        $("#end_break").val("<?php echo $getHostByID['end_break']; ?>");
+        $("#sms_interval").val("<?php echo $getHostByID['sms_interval']; ?>");
+        $("#geofencing_range").val("<?php echo $getHostByID['geofencing_range']; ?>");
+    });
 </script>
