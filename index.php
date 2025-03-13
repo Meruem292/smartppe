@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>SMART PPE</title>
     <style>
         body {
@@ -73,26 +74,22 @@
                         <h3>Login as Host</h3>
                     </div>
                     <div class="card-body">
-                        <form action="action.php" method="POST">
+                        <form action="helpers/auth.php" method="POST">
                             <div class="form-group mb-3">
-                                <label for="name">Name</label>
-                                <input type="text" name="name" id="name" class="form-control" required>
+                                <label for="hostname">Hostname</label>
+                                <input type="text" name="hostname" id="hostname" class="form-control" required>
                             </div>
                             <div class="form-group
                                 mb-3">
                                 <label for="password">password</label>
                                 <input type="password" name="password" id="password" class="form-control" required>
                             </div>
-                            <div class="form-group
-                                mb-3">
-                                <label for="phone">Phone</label>
-                                <input type="text" name="phone" id="phone" class="form-control" required maxlength="11">
-                            </div>
-                        </form>
+
                     </div>
                     <div class="card-footer text-center">
                         <button type="submit" name="signin_host" class="btn btn-primary">Sign in</button>
                     </div>
+                    </form>
                 </div>
             </div>
             <div class="col-md-6">
@@ -102,11 +99,11 @@
                         <h3>Sign up as Host</h3>
                     </div>
                     <div class="card-body">
-                        <form action="action.php" method="POST">
+                        <form action="helpers/auth.php" method="POST">
                             <div class="form-group
                                 mb-3">
-                                <label for="name">Name</label>
-                                <input type="text" name="name" id="name" class="form-control" required>
+                                <label for="hostname">Hostname</label>
+                                <input type="text" name="hostname" id="hostname" class="form-control" required>
                             </div>
                             <div class="form-group
                                 mb-3">
@@ -115,14 +112,15 @@
                             </div>
                             <div class="form-group
                                 mb-3">
-                                <label for="phone">Phone</label>
-                                <input type="number" name="phone" id="phone" class="form-control" required maxlength="11">
+                                <label for="phoneno">Phone</label>
+                                <input type="number" name="phoneno" id="phoneno" class="form-control" required maxlength="11">
                             </div>
-                        </form>
+
                     </div>
                     <div class="card-footer text-center">
                         <button type="submit" name="signup_host" class="btn btn-primary">Sign up</button>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -135,7 +133,7 @@
                         <h3>Sign in as Worker</h3>
                     </div>
                     <div class="card-body">
-                        <form action="action.php" method="POST">
+                        <form action="helpers/auth.php" method="POST">
                             <div class="form-group mb-3">
                                 <label for="name">Name</label>
                                 <input type="text" name="name" id="name" class="form-control" required>
@@ -150,11 +148,12 @@
                                 <label for="phone">Phone</label>
                                 <input type="text" name="phone" id="phone" class="form-control" required maxlength="11">
                             </div>
-                        </form>
+
                     </div>
                     <div class="card-footer text-center">
                         <button type="submit" name="signin_worker" class="btn btn-primary">Sign in</button>
                     </div>
+                    </form>
                 </div>
             </div>
             <div class="col-md-6">
@@ -164,7 +163,7 @@
                         <h3>Sign up as Worker</h3>
                     </div>
                     <div class="card-body">
-                        <form action="action.php" method="POST">
+                        <form action="helpers/auth.php" method="POST">
                             <div class="form-group
                                 mb-3">
                                 <label for="name">Name</label>
@@ -177,14 +176,15 @@
                             </div>
                             <div class="form-group
                                 mb-3">
-                                <label for="phone">Phone</label>
-                                <input type="number" name="phone" id="phone" class="form-control" required maxlength="11">
+                                <label for="device_id">device_id</label>
+                                <input type="text" name="device_id" id="deviceID" class="form-control" required maxlength="11">
                             </div>
-                        </form>
+
                     </div>
                     <div class="card-footer text-center">
                         <button type="submit" name="signup_worker" class="btn btn-primary">Sign up</button>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -211,5 +211,6 @@
         });
     </script>
 </body>
+
 
 </html>
