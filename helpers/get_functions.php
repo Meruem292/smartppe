@@ -17,10 +17,27 @@ function getWorkersLogs($pdo, $worker_id)
     $result = $stmt->fetchAll();
     return $result ? $result : [];
 }
+function getGeneralLogs($pdo, $host_id)
+{
+    $sql = "SELECT * FROM logs WHERE host_id = ?";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$host_id]);
+    $result = $stmt->fetchAll();
+    return $result ? $result : [];
+}
 function getWorkerByID($id)
 {
     global $pdo;
     $sql = "SELECT * FROM workers WHERE id = ?";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$id]);
+    $result = $stmt->fetch();
+    return $result ? $result : [];
+}
+function getHostByID($id)
+{
+    global $pdo;
+    $sql = "SELECT * FROM hosts WHERE host_id = ?";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$id]);
     $result = $stmt->fetch();

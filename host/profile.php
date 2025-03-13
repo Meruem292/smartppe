@@ -1,6 +1,10 @@
 <?php
 session_start();
 include "../helpers/get_functions.php";
+if (!isset($_SESSION['host_id'])) {
+    header("Location: ../index.php");
+    exit();
+}
 $worker = getWorkerByID($_GET['id']);
 ?>
 
