@@ -76,12 +76,12 @@
                     <div class="card-body">
                         <form action="helpers/auth.php" method="POST">
                             <div class="form-group mb-3">
-                                <label for="hostname">Hostname</label>
+                                <label for="hostname">Hostname<span style="color:red">*</span></label>
                                 <input type="text" name="hostname" id="hostname" class="form-control" required>
                             </div>
                             <div class="form-group
                                 mb-3">
-                                <label for="password">password</label>
+                                <label for="password">Password <span style="color:red">*</span></label>
                                 <input type="password" name="password" id="password" class="form-control" required>
                             </div>
 
@@ -102,20 +102,19 @@
                         <form action="helpers/auth.php" method="POST">
                             <div class="form-group
                                 mb-3">
-                                <label for="hostname">Hostname</label>
+                                <label for="hostname">Hostname <span style="color:red">*</span></label>
                                 <input type="text" name="hostname" id="hostname" class="form-control" required>
                             </div>
                             <div class="form-group
                                 mb-3">
-                                <label for="password">Password</label>
+                                <label for="password">Password <span style="color:red">*</span></label>
                                 <input type="password" name="password" id="password" class="form-control" required>
                             </div>
                             <div class="form-group
                                 mb-3">
-                                <label for="phoneno">Phone</label>
-                                <input type="number" name="phoneno" id="phoneno" class="form-control" required maxlength="11">
+                                <label for="phoneno">Phone <span style="color:red">*</span></label>
+                                <input type="number" name="phoneno" id="phoneno" class="form-control" required maxlength="11" required>
                             </div>
-
                     </div>
                     <div class="card-footer text-center">
                         <button type="submit" name="signup_host" class="btn btn-primary">Sign up</button>
@@ -135,27 +134,21 @@
                     <div class="card-body">
                         <form action="helpers/auth.php" method="POST">
                             <div class="form-group mb-3">
-                                <label for="name">Name</label>
-                                <input type="text" name="name" id="name" class="form-control" required>
+                                <label for="device_id">Device ID <span style="color:red">*</span></label>
+                                <input type="text" name="device_id" id="device_id" class="form-control" required>
                             </div>
-                            <div class="form-group
-                                mb-3">
-                                <label for="password">password</label>
+                            <div class="form-group mb-3">
+                                <label for="password">Password <span style="color:red">*</span></label>
                                 <input type="password" name="password" id="password" class="form-control" required>
                             </div>
-                            <div class="form-group
-                                mb-3">
-                                <label for="phone">Phone</label>
-                                <input type="text" name="phone" id="phone" class="form-control" required maxlength="11">
+                            <div class="card-footer text-center">
+                                <button type="submit" name="signin_worker" class="btn btn-primary">Sign in</button>
                             </div>
-
+                        </form>
                     </div>
-                    <div class="card-footer text-center">
-                        <button type="submit" name="signin_worker" class="btn btn-primary">Sign in</button>
-                    </div>
-                    </form>
                 </div>
             </div>
+
             <div class="col-md-6">
                 <h1 class="text-center">SMART PPE</h1>
                 <div class="card">
@@ -166,18 +159,23 @@
                         <form action="helpers/auth.php" method="POST">
                             <div class="form-group
                                 mb-3">
-                                <label for="name">Name</label>
+                                <label for="name">Name <span style="color:red">*</span></label>
                                 <input type="text" name="name" id="name" class="form-control" required>
                             </div>
                             <div class="form-group
                                 mb-3">
-                                <label for="password">Password</label>
-                                <input type="password" name="password" id="password" class="form-control" required>
+                                <label for="device_id">Device ID <span style="color:red">*</span></label>
+                                <input type="text" name="device_id" id="deviceID" class="form-control" required maxlength="11">
                             </div>
                             <div class="form-group
                                 mb-3">
-                                <label for="device_id">device_id</label>
-                                <input type="text" name="device_id" id="deviceID" class="form-control" required maxlength="11">
+                                <label for="host_id">Host ID <span style="color:red">*</span></label>
+                                <input type="text" name="host_id" id="host_id" class="form-control" required maxlength="11" required>
+                            </div>
+                            <div class="form-group
+                                mb-3">
+                                <label for="password">Password <span style="color:red">*</span></label>
+                                <input type="password" name="password" id="password" class="form-control" required>
                             </div>
 
                     </div>

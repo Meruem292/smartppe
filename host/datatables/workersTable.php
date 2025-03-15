@@ -3,7 +3,6 @@ $host_id = $_SESSION['host_id'];
 $workers = getWorkers($pdo, $host_id);
 ?>
 
-
 <table id="workerTbl" class="table table-striped" style="width:100%">
     <thead>
         <tr>
@@ -26,4 +25,3 @@ $workers = getWorkers($pdo, $host_id);
             </tr>
         <?php endforeach; ?>
 </table>
-<!-- Initialize DataTables -->

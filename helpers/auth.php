@@ -2,7 +2,7 @@
 require_once '../includes/db.php';
 function generateHostID()
 {
-    return "SP" . rand(1000, 9999);
+    return "SPH" . rand(1000, 9999);
 }
 
 if (isset($_POST['signup_host'])) {
@@ -73,5 +73,87 @@ if (isset($_POST['signup_host'])) {
                 });
               </script>";
         header("Location: ../index.php");
+    }
+} else if (isset($_POST['signup_worker'])) {
+
+    $host_id = $_POST['host_id'];
+    $name = $_POST['name'];
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $device_id = $_POST['device_id'];
+
+    $sql = "INSERT INTO workers (host_id, name, password, device_id, created_at) 
+            VALUES (:host_id, :name, :password, :device_id, NOW())";
+
+    $stmt = $pdo->prepare($sql);
+
+    $stmt->bindParam(':host_id', $host_id);
+    $stmt->bindParam(':name', $name); // Fixed incorrect placeholder
+    $stmt->bindParam(':password', $password);
+    $stmt->bindParam(':device_id', $device_id);
+
+    if ($stmt->execute()) {
+        echo "<script>
+                alert('Host registered successfully!');
+                window.location.href = '../index.php';
+              </script>";
+        exit; // Ensures script stops execution
+    } else {
+        echo "<script>
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Something went wrong. Please try again!',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                }).then(() => {
+                    window.location.href = '../index.php';
+                });
+              </script>";
+        exit;
+    }
+} else if (isset($_POST['signin_worker'])) {
+
+    $device_id = $_POST['device_id'];
+    $password = $_POST['password'];
+
+    $stmt = $pdo->prepare("SELECT * FROM workers WHERE device_id = :device_id");
+    $stmt->bindParam(':device_id', $device_id);
+    $stmt->execute();
+    $worker = $stmt->fetch();
+
+    if ($worker) {
+        if (password_verify($password, $worker['password'])) {
+            session_start();
+
+            $_SESSION['worker_id'] = $worker['id'];
+            $_SESSION['device_id'] = $worker['device_id'];
+            $_SESSION['worker_name'] = $worker['name']; // Added for consistency
+
+            header("Location: ../worker/index.php");
+            exit;
+        } else {
+            echo "<script>
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'Invalid password!',
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    }).then(() => {
+                        window.location.href = '../index.php';
+                    });
+                  </script>";
+            exit;
+        }
+    } else {
+        echo "<script>
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Worker not found!',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                }).then(() => {
+                    window.location.href = '../index.php';
+                });
+              </script>";
+        exit;
     }
 }

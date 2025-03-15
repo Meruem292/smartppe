@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['host_id'])) {
+if (!isset($_SESSION['worker_id'])) {
     header("Location: ../index.php");
     exit();
 }
@@ -52,16 +52,12 @@ if (!isset($_SESSION['host_id'])) {
 
     <div class="container mt-5">
         <div class="row">
-
             <div class="col-md-12">
                 <a href="../helpers/logout.php" style="width:10%" class="btn btn-danger mb-2">Logout</a>
                 <div class="card">
                     <div class="card-head d-flex justify-content-between align-items-center px-3 pt-3">
-                        <h4>Workers List</h4>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateConfigModal">
-                            Update Config
-                        </button>
-                        <?php include "modals/update_config.php"; ?>
+                        <h4>History</h4>
+
                     </div>
                     <hr>
                     <div class="card-body">
@@ -69,26 +65,22 @@ if (!isset($_SESSION['host_id'])) {
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link active" id="workers-tab" data-bs-toggle="tab" data-bs-target="#workers" type="button" role="tab" aria-controls="workers" aria-selected="true">
-                                    Workers List
+                                    Your History
                                 </button>
                             </li>
 
-                            <li class="nav-item" role="presentation">
+                            <!-- <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="logs-tab" data-bs-toggle="tab" data-bs-target="#logs" type="button" role="tab" aria-controls="logs" aria-selected="false">
                                     General Logs
                                 </button>
-                            </li>
+                            </li> -->
                         </ul>
 
                         <!-- Tab Content -->
                         <div class="tab-content mt-3" id="myTabContent">
                             <!-- Workers List Tab -->
                             <div class="tab-pane fade show active" id="workers" role="tabpanel" aria-labelledby="workers-tab">
-                                <?php include "datatables/workersTable.php"; ?>
-                            </div>
-                            <!-- Logs Tab -->
-                            <div class="tab-pane fade" id="logs" role="tabpanel" aria-labelledby="logs-tab">
-                                <?php include "datatables/workersGeneralLogsTable.php"; ?>
+                                <?php include "datatables/workerHistory.php"; ?>
                             </div>
 
                         </div>
@@ -110,38 +102,11 @@ if (!isset($_SESSION['host_id'])) {
 
     <!-- DataTables JS -->
     <script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
-
-
     <script>
         $(document).ready(function() {
-            $('#updateConfigModal').on('shown.bs.modal', function() {
-                $('.timepicker').timepicker({
-                    timeFormat: 'h:mm p',
-                    interval: 60,
-                    minTime: '10:00am',
-                    maxTime: '6:00pm',
-                    defaultTime: '11:00am',
-                    startTime: '10:00am',
-                    dynamic: false,
-                    dropdown: true,
-                    scrollbar: true,
-                });
-            });
+            $('#profileLogs').DataTable();
         });
     </script>
-    <script>
-        $(document).ready(function() {
-            $('#generalLogsTbl').DataTable();
-        });
-    </script>
-
-    <script>
-        $(document).ready(function() {
-            $('#workerTbl').DataTable();
-        });
-    </script>
-
-
 </body>
 
 </html>

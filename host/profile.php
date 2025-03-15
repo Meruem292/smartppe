@@ -7,7 +7,6 @@ if (!isset($_SESSION['host_id'])) {
 }
 $worker = getWorkerByID($_GET['id']);
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,10 +48,13 @@ $worker = getWorkerByID($_GET['id']);
 
     <div class="container mt-5">
         <div class="row">
+
             <div class="col-md-12">
+                <a href="../helpers/logout.php" style="width:10%" class="btn btn-danger mb-2">Logout</a>
                 <div class="card">
-                    <div class="card-head px-3 pt-3">
+                    <div class="card-head d-flex justify-content-between align-items-center px-3 pt-3">
                         <h4><?= $worker['name'] ?></h4>
+                        <buttonn id="backBtn" class="btn btn-secondary">Back</buttonn>
                     </div>
                     <hr>
                     <div class="card-body">
@@ -79,6 +81,11 @@ $worker = getWorkerByID($_GET['id']);
     <script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
 
 
+    <script>
+        $("#backBtn").click(function() {
+            window.location.href = "index.php";
+        });
+    </script>
     <script>
         $(document).ready(function() {
             $('#profileLogs').DataTable();
